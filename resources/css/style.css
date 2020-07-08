@@ -393,6 +393,7 @@ nav p {
 .section-rsvp {
     background-color: rgb(240, 240, 240);
     position: relative;
+
 }
 
 .section-rsvp a:link,
@@ -418,7 +419,8 @@ nav p {
     vertical-align: top;
 }
 
-.section-rsvp span {
+.section-rsvp span,
+.section-survey span {
     color: #da96ae;
     font-weight: 400;
 }
@@ -505,6 +507,17 @@ nav p {
     margin-bottom: 10px;
 }
 
+/* Survey */
+.section-survey {
+    background-color: #e4e4e4;
+}
+.section-survey input[type=submit] {
+    display: block;
+    margin-left: auto;
+}
+
+
+
 
 
 /* ------------------------ */
@@ -514,6 +527,7 @@ nav p {
 input[type=text],
 input[type=email],
 input[type=phone],
+input[type=date],
 select,
 textarea {
     width: 100%;
@@ -545,6 +559,9 @@ select {
 *:focus {
     outline:none;
 }
+
+
+
 
 /* ------------------------ */
 /* Footer */

@@ -114,7 +114,7 @@ $(document).ready(function () {
     icon.attr("data-alt-src", temp);
   });
 
-  var $form = $('form#rsvp-form'),
+  var $form1 = $('form#rsvp-form'),
     url =
       "https://script.google.com/macros/s/AKfycbxaxjKgLF03sGcaP8LXEiELELHeZCHC82Sfs8LkeoXdrZ6cpMUJ/exec";
 
@@ -125,16 +125,48 @@ $(document).ready(function () {
       url: url,
       method: "GET",
       dataType: "json",
-      data: $form.serialize(),
+      data: $form1.serialize(),
       success: function() {
       // do something
-      console.log('success');
-      $('.rsvp-confirm').fadeIn(1000);
-      $('.rsvp-confirm').delay(2500).fadeOut(1000);
+        console.log(url);
+        $('.rsvp-confirm').fadeIn(1000);
+        $('.rsvp-confirm').delay(2500).fadeOut(1000);
+      }
+    })
+  });
+
+  var $form2 = $('form#survey-form'),
+    url =
+      "https://script.google.com/macros/s/AKfycbw5bu0ahOgRMDZTs_MQMxpXF3hD61Zw_eqyrik8J3iUmqxlfqQ/exec";
+
+  $("#submit-survey").on("click", function (e) {
+    console.log("survey submitted");
+    e.preventDefault();
+    var jqxhr = $.ajax({
+      url: url,
+      method: "GET",
+      dataType: "json",
+      data: $form2.serialize(),
+      success: function() {
+      // do something
+        console.log("survey success");
+
+        var results = $.getJSON("https://sheets.googleapis.com/v4/spreadsheets/1W40EGUzbhEjAre7Fi7zd_RPEW2X3pH2PRk2E8R1YjPY/?key=AIzaSyDfPvIDXwsnfsYW5kp7_nWqmVWjd6Fk-Y4&&fields=properties.title,sheets(properties,data.rowData.values(effectiveValue,effectiveFormat))");
+        
+        console.log(results);
+        // $("div.survey-results").html(function(){
+        //   let output = "<table><tr>";
+        //   for (x in results["responseJSON"]["sheets"][0]["data"]["rowData"]) {
+        //     output += "<th>" + x + "</th>"
+        //   }
+        // })
+
 
       }
     })
   });
+
+
 
 
 });
