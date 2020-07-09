@@ -226,7 +226,20 @@ nav p {
     margin: 5px 0;
 }
 
-
+.iframe {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    display:none;
+}
+.exit {
+    border-radius: 50%;
+    padding: 0 5px;
+    position: relative;
+    float: right;
+    margin-left: 10px;
+    cursor: pointer;
+}
 
 
 /* ------------------------ */
@@ -393,7 +406,7 @@ nav p {
 .section-rsvp {
     background-color: rgb(240, 240, 240);
     position: relative;
-
+    display: none;
 }
 
 .section-rsvp a:link,
@@ -511,9 +524,9 @@ nav p {
 .section-survey {
     background-color: #e4e4e4;
 }
-.section-survey input[type=submit] {
+.section-survey iframe {
     display: block;
-    margin-left: auto;
+    margin: 0 auto;
 }
 
 

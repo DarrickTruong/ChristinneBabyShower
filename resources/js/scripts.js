@@ -20,6 +20,12 @@ $(document).ready(function () {
       1000
     );
   });
+  $(".js--scroll-registry").click(function () {
+    $("html,body").animate(
+      { scrollTop: $(".js--section-registry").offset().top },
+      1000
+    );
+  });
 
   /* Smooth Scroll on nav click (from css-tricks) */
 
@@ -151,21 +157,65 @@ $(document).ready(function () {
       // do something
         console.log("survey success");
 
-        var results = $.getJSON("https://sheets.googleapis.com/v4/spreadsheets/1W40EGUzbhEjAre7Fi7zd_RPEW2X3pH2PRk2E8R1YjPY/?key=AIzaSyDfPvIDXwsnfsYW5kp7_nWqmVWjd6Fk-Y4&&fields=properties.title,sheets(properties,data.rowData.values(effectiveValue,effectiveFormat))");
-        
-        console.log(results);
-        // $("div.survey-results").html(function(){
-        //   let output = "<table><tr>";
-        //   for (x in results["responseJSON"]["sheets"][0]["data"]["rowData"]) {
-        //     output += "<th>" + x + "</th>"
-        //   }
-        // })
 
 
       }
     })
   });
 
+  // Youtube API
+  var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '390',
+          width: '640',
+          videoId: 'f_S1oWfr-R4',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          setTimeout(stopVideo, 6000);
+          done = true;
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+
+      onYouTubeIframeAPIReady();
+
+      $(".play").on("click", function(){
+      console.log("clicked");
+      $(".iframe").fadeIn();
+      });
+
+      $(".exit").on("click", function(){
+        player.stopVideo();
+        $(".iframe").fadeOut();
+      })
+  
 
 
 
