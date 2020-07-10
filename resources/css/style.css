@@ -236,9 +236,18 @@ nav p {
     border-radius: 50%;
     padding: 0 5px;
     position: relative;
-    float: right;
-    margin-left: 10px;
+    float: left;
+    margin: 10px;
     cursor: pointer;
+    border: 1px solid black;
+    color: black;
+    background-color: #b3b1b1;
+}
+
+.close {
+    display: none;
+    vertical-align: top;
+    margin-top: 10px;
 }
 
 
